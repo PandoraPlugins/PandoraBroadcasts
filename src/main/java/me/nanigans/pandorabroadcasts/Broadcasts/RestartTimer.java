@@ -14,8 +14,8 @@ public class RestartTimer extends TimerTask {
     private Date startTime;
     private final long restartTime;
 
-    public RestartTimer(String message, Map<String, Object> restartDate) {
-        this.message = ChatColor.translateAlternateColorCodes('&', message);
+    public RestartTimer(Map<String, Object> restartDate) {
+        this.message = ChatColor.translateAlternateColorCodes('&', restartDate.get("message").toString());
         this.restartDate = restartDate;
         this.restartTime = new Date().getTime()+Long.parseLong(restartDate.get("restartTime").toString());
         final Map<String, Object> countdownFrom = (Map<String, Object>) restartDate.get("countdownFrom");

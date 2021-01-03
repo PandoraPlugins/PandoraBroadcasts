@@ -14,6 +14,7 @@
     }
   },
   "Restart_Broadcast": {
+    "onRestart": "The server is now restarting",
     "message": "The server will restart in {time}",
     "_comment": "restartTime is the time the server will be up before the next scheduled restart",
     "restartTime": 10800000,
