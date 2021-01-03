@@ -10,23 +10,19 @@ public class RestartTimer extends TimerTask {
     private final String message;
     private final Map<String, Object> restartDate;
     private final Timer timer = new Timer();
-    private final Timer countDownTimer = new Timer();
     private Date startTime;
     private final long restartTime;
 
     public RestartTimer(Map<String, Object> restartDate) {
+        System.out.println("restartDate = " + restartDate);
         this.message = ChatColor.translateAlternateColorCodes('&', restartDate.get("message").toString());
         this.restartDate = restartDate;
         this.restartTime = new Date().getTime()+Long.parseLong(restartDate.get("restartTime").toString());
-        final Map<String, Object> countdownFrom = (Map<String, Object>) restartDate.get("countdownFrom");
-
-        if(countdownFrom != null)
-            countDownTimer.schedule(this, restartTime-Long.parseLong(countdownFrom.get("from").toString()));
     }
 
     public Date calculateStartTime(){
         final Calendar calendar = Calendar.getInstance();
-        long restartTime = calendar.getTimeInMillis() + Long.parseLong(restartDate.get("restartTime").toString());
+        long restartTime = new Date().getTime() + Long.parseLong(restartDate.get("restartTime").toString());
         restartTime -= Long.parseLong(restartDate.get("startWarnTime").toString());
         calendar.setTimeInMillis(restartTime);
         return calendar.getTime();
@@ -44,8 +40,12 @@ public class RestartTimer extends TimerTask {
         Bukkit.getServer().broadcastMessage(this.message.replaceAll("\\{time}",
                 DateParser.formatDateDiff(Calendar.getInstance(), endTime))
                 );
-        if(new Date().getTime() > restartTime)
+        if(new Date().getTime() >= restartTime)
             this.cancel();
+    }
+
+    public long getRestartTime() {
+        return restartTime;
     }
 
     public Date getStartTime() {
