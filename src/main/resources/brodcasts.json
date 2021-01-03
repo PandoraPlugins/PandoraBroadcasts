@@ -1,0 +1,30 @@
+{
+  "_comment": "The start time is when the broadcasts starts in the hour the server starts up",
+  "_comment1": "The repeatTime is in milliseconds for when the message should send after the start time",
+
+  "Custom_Broadcasts": {
+    "discord_broadcast": {
+      "message": "Check out our discord here! discord.com/PandoraPVP",
+      "startTime": {
+        "minute": 30,
+        "second": 20
+      },
+      "repeatTime": 1800000
+    }
+  },
+  "Restart_Broadcast": {
+    "message": "The server will restart in {time}",
+    "_comment": "restartTime is the time the server will be up before the next scheduled restart",
+    "restartTime": 10800000,
+    "_comment1": "startWarnTime is when it should start broadcasting before restart",
+    "startWarnTime": 1800000,
+    "_comment2": "repeatWarn is the interval in which it should warn the restart until it happens",
+    "repeatWarn": 300000,
+    "countdownFrom": {
+      "_comment": "this will countdown from 5 seconds every 1 second",
+      "time": 5000,
+      "interval": 1000
+    }
+  }
+
+}

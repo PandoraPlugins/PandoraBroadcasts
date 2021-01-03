@@ -1,0 +1,5 @@
+name: PandoraBroadcasts
+version: ${project.version}
+main: me.nanigans.pandorabroadcasts.PandoraBroadcasts
+authors: [ProNanigans]
+description: PandoraPVP Auto Broadcaster 
