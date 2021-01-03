@@ -1,9 +1,10 @@
 {
-  "_comment": "The start time is when the broadcasts starts in the hour the server starts up",
+  "_comment": "The start time is when the broadcasts starts in the hour the server starts up. Set to <null> to send as soon as the server starts",
   "_comment1": "The repeatTime is in milliseconds for when the message should send after the start time",
 
   "Custom_Broadcasts": {
     "discord_broadcast": {
+      "enabled": true,
       "message": "Check out our discord here! discord.com/PandoraPVP",
       "startTime": {
         "minute": 30,
@@ -22,7 +23,7 @@
     "repeatWarn": 300000,
     "countdownFrom": {
       "_comment": "this will countdown from 5 seconds every 1 second",
-      "time": 5000,
+      "from": 5000,
       "interval": 1000
     }
   }
