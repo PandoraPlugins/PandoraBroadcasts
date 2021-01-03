@@ -11,8 +11,8 @@ public class CustomBroadcasts extends TimerTask {
     private Date startTime;
     private final boolean enabled;
     private final Timer timer;
-    public CustomBroadcasts(String message, Map<String, Object> messageData){
-        this.message = ChatColor.translateAlternateColorCodes('&', message);
+    public CustomBroadcasts(Map<String, Object> messageData){
+        this.message = ChatColor.translateAlternateColorCodes('&', messageData.get("message").toString());
         this.messageData = messageData;
         this.enabled = Boolean.parseBoolean(messageData.get("enabled").toString());
         this.timer = new Timer();
