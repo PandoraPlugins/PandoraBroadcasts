@@ -72,7 +72,6 @@ public final class PandoraBroadcasts extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         broadcastsMap.forEach((i, j) -> {
-            System.out.println("i = " + i);
             j.cancel();
         });
         Map<String, Object> restart = (Map<String, Object>) JsonUtil.getData("Restart_Broadcast");
@@ -82,39 +81,3 @@ public final class PandoraBroadcasts extends JavaPlugin {
         Bukkit.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', restart.get("onRestart").toString()));
     }
 }
-
-
-/*
-{
-  "_comment": "The start time is when the broadcasts starts in the hour the server starts up. Set to <null> to send as soon as the server starts",
-  "_comment1": "The repeatTime is in milliseconds for when the message should send after the start time",
-
-  "Custom_Broadcasts": {
-    "discord_broadcast": {
-      "enabled": true,
-      "message": "Check out our discord here! discord.com/PandoraPVP",
-      "startTime": {
-        "minute": 30,
-        "second": 20
-      },
-      "repeatTime": 1800000
-    }
-  },
-  "Restart_Broadcast": {
-  "onRestart": "The server is now restarting",
-    "message": "The server will restart in {time}",
-    "_comment": "restartTime is the time the server will be up before the next scheduled restart",
-    "restartTime": 10800000,
-    "_comment1": "startWarnTime is when it should start broadcasting before restart",
-    "startWarnTime": 1800000,
-    "_comment2": "repeatWarn is the interval in which it should warn the restart until it happens",
-    "repeatWarn": 300000,
-    "countdownFrom": {
-      "_comment": "this will countdown from 5 seconds every 1 second",
-      "from": 5000,
-      "interval": 1000
-    }
-  }
-
-}
- */
